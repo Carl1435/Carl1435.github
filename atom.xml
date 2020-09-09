@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-09T11:01:13.216Z</updated>
+    <updated>2020-09-09T11:03:38.221Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -24,7 +24,7 @@
   下面是对标签的整理：<br>
 &lt;!--...--&gt; ：注释<br>
 &lt;!DOCTYPE&gt;：<!DOCTYPE html>是html5唯一的声明，用于告知浏览器使用的html版本<br>
-&lt;a&gt;：超文本链接，属性：href,download,rel(供搜索引擎使用)，target（在哪里打开链接，只用过_blank）,<a herf='http://www.baidu.com'>baidu</a><br>
+&lt;a&gt;：超文本链接，属性：href,download,rel(供搜索引擎使用)，target（在哪里打开链接，只用过_blank）,<a herf="http://www.w3school.com.cn">baidu</a><br>
 &lt;abbr&gt;:给文字一段注释，<abbr title='注释'>例子</abbr><br>
 &lt;address&gt;:描述作者，表现为斜体和前后的换行，<address>writer</address><br>
 \ <area>：</p>
