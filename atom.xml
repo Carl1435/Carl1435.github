@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-09T12:50:38.849Z</updated>
+    <updated>2020-09-10T09:46:16.491Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -10,59 +10,6 @@
     <logo>https://Carl1435.github.io/images/avatar.png</logo>
     <icon>https://Carl1435.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[html学习]]></title>
-        <id>https://Carl1435.github.io/post/chang-shi-yi-xia/</id>
-        <link href="https://Carl1435.github.io/post/chang-shi-yi-xia/">
-        </link>
-        <updated>2020-09-08T10:52:23.000Z</updated>
-        <content type="html"><![CDATA[<p>  之前虽然有学过html，不过都是边用边学，所以来系统的学一下，顺便养成写博客的习惯，加油！<br>
-基础概念：<br>
-  html：一种标记语言，就是把一种种网页的组成元素给标记起来方便我们来对其使用。<br>
-  xhtml:与html类似，但更加严格，要求标签必须闭合，小写，参数要用引号括起来<br>
-  xml：用于传输数据，是对html的补充，要求闭合。<br>
-  下面是对标签的整理：<br>
-&lt;!--...--&gt; ：注释<br>
-&lt;!DOCTYPE&gt;：<!DOCTYPE html>是html5唯一的声明，用于告知浏览器使用的html版本<br>
-&lt;a&gt;：超文本链接，属性：href,download,rel(供搜索引擎使用)，target（在哪里打开链接，只用过_blank）,&lt;a herf=&quot;http://www.w3school.com.cn&quot;&gt;baidu</a><br>
-&lt;abbr&gt;:给文字一段注释，<abbr title='注释'>例子</abbr><br>
-&lt;address&gt;:描述作者，表现为斜体和前后的换行，<address>writer</address><br>
-\ <area>：给图像可点击区域设置链接。属性：tref（链接）、alt(报错)、shape(形状)、coords(坐标)<br>
-&lt;article&gt;:定义有意义的且必须是独立于文档的其余部分。感觉类似div<br>
-&lt;aside&gt;:同上<br>
-&lt;audio&gt;:定义声音.标签间放置的文本会在浏览器不支持时显示。属性：autoplay（立即播放），controls（显示控制部件），loop（循环）<br>
-<img src="https://Carl1435.github.io/post-images/1599651703934.png" alt="" loading="lazy"><br>
-&lt;b&gt;:<b>加粗</b><br>
-&lt;base&gt;:默认链接和链接属性<br>
-<font color='red'>&lt;bdi&gt;:不懂，设置一段文本，使其脱离其父元素的文本方向设置</font><br>
-&lt;bdo&gt;:规定文本方向<br>
-&lt;big&gt;:<big>html5不支持</big><br>
-&lt;blockquote&gt;:定义摘自另一个源的块引用。没用过，不清楚。两侧缩进。<br>
-&lt;body&gt;:定义文档主体。<br>
-&lt;br&gt;:换行<br>
-&lt;button&gt;:按钮<br>
-&lt;canvas&gt;:之后再说<br>
-&lt;caption&gt;:表格标题<br>
-&lt;center&gt;:<center>html5不支持</center><br>
-&lt;cite&gt;:<cite>定义标题</cite><br>
-&lt;code&gt;:计算机代码文本<br>
-&lt;col&gt;:规定了\ <colgroup> 元素内部的每一列的列属性。<br>
-&lt;colgroup&gt; :对列进行组合设计样式<br>
-&lt;datalist&gt;:输入框的下拉菜单<br>
-&lt;dl&gt; （定义一个描述列表）和 &lt;dt&gt; （定义项目/名字）&lt;dd&gt;(对一个描述列表中的项目/名字进行描述)<br>
-&lt;del&gt;:<del>效果</del><br>
-&lt;detail&gt;:只有 Chrome 和 Safari 6 支持 。补充细节，就是一个下拉框。<br>
-&lt;dfn&gt;:定义项目<br>
-&lt;dialog&gt;:定义一个对话框、确认框或窗口。ie不支持<br>
-&lt;dir&gt;:html5不支持,定义目录列表<br>
-&lt;div&gt;:划分区域，组合块级元素，html5不支持align属性<br>
-&lt;em&gt;:<em>强调</em><br>
-&lt;embed&gt;:嵌入外部应用或者互动程序,建议用 &lt;img&gt;、&lt;iframe&gt;、&lt;video&gt;、&lt;audio&gt; 等标签代替<br>
-&lt;fieldset&gt;:对表单分组，会画一个边框<br>
-&lt;figcaption&gt;:为&lt;figure&gt;定义标题，放在&lt;figure&gt;的第一个或者最后一个元素<br>
-\</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://Carl1435.github.io/post/hello-gridea/</id>
