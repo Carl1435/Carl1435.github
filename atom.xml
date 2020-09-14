@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-11T10:50:32.016Z</updated>
+    <updated>2020-09-14T04:23:59.340Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -10,6 +10,131 @@
     <logo>https://Carl1435.github.io/images/avatar.png</logo>
     <icon>https://Carl1435.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[CSS]]></title>
+        <id>https://Carl1435.github.io/post/css/</id>
+        <link href="https://Carl1435.github.io/post/css/">
+        </link>
+        <updated>2020-09-14T01:13:35.000Z</updated>
+        <content type="html"><![CDATA[<p>布局(好像&lt;p&gt;文本只会在空格处才能换行）fr对剩余宽度按比例自适应<br>
+multi-column布局：文本自动填满每个列，无法对每个列进行设置样式，<br>
+  column-width：控制列的宽度<br>
+  column-gap:控制列之间距离（grid-column-gap），用margin来代替也可<br>
+  column-rule：控制列之间直线的样式</p>
+<p>flex布局：将空间分为几个列，每个列放入各个子元素<br>
+  display: flex;<br>
+  flex-direction：规定元素如何在flex内布局，（横竖排列和放置顺序）<br>
+  flex-wrap：控制是否允许元素换行，不允许的话会等比例缩放</p>
+<p>grid布局：可以同时控制行和列对齐<br>
+  display: grid;<br>
+  grid-template-columns:<br>
+  </p>
+<p>动画<br>
+animation-name：指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。<br>
+animation-duration：播放一个动画要用的时长<br>
+animation-timing-function：设置动画的速度样式<br>
+animation-delay：动画何时开始，设为负x时会从x秒直接开始播放<br>
+animation-iteration-count：动画运行次数，可以是小数，不可以是负数<br>
+animation-direction：是否为反向播放<br>
+animation-fill-mode：动画开始和结束时的样式，forwards：保留最后一帧，backwards：在<br>
+  animation-delay期间也会保持第一帧<br>
+animation-play-state：设置动画的暂停和播放。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[canvas和svg]]></title>
+        <id>https://Carl1435.github.io/post/canvas-he-svg/</id>
+        <link href="https://Carl1435.github.io/post/canvas-he-svg/">
+        </link>
+        <updated>2020-09-11T11:06:23.000Z</updated>
+        <content type="html"><![CDATA[<p>canvas：<br>
+之前有用canvas画过折线图，所以还比较熟。<br>
+1.在html页面上定义好canvas位置和大小<br>
+2.在JavaScript里画图</p>
+<p>1 固定格式<br>
+canvas=document.getElementById（）<br>
+let context = canvas.getContext(&quot;2d&quot;);<br>
+2 消除锯齿（就放大画，然后缩小显示）<br>
+canvas.style.width=WIDTH;<br>
+canvas.style.height=HEIGHT;<br>
+canvas.height=HEIGHT<em>4;<br>
+canvas.width=WIDTH</em>4;<br>
+context.scale(4,4);<br>
+3开始画<br>
+moveTo<br>
+lineTo<br>
+用那些给的函数画就可以了</p>
+<p>贴一段代码（当初查了好久的百度才写好一个画图的函数，居然不知道用echars，唉）</p>
+<pre><code class="language-JavaScript">function drawChart2(mydata)
+{
+    let canvas = document.getElementById('myCanvas3');
+    let data =[];
+    let max=0;
+    for(let i=4;i&lt;15;i++)
+    {
+        data[i-4]=mydata[i]
+    }
+    max=mydata[0];
+    let up=mydata[1];
+    let down=mydata[2];
+    let context = canvas.getContext(&quot;2d&quot;);
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+    canvas.style.width=WIDTH;
+    canvas.style.height=HEIGHT;
+    canvas.height=HEIGHT*4;
+    canvas.width=WIDTH*4;
+    context.scale(4,4);
+    var axisYStart = {// y轴的终点坐标值
+        x: 10,
+        y: 30
+    };
+    var origin = {// 原点坐标值(x轴与y轴相交点)
+        x: 10,
+        y: HEIGHT - 50
+    };
+    var axisXStart = {// x轴的终点坐标值
+        x: WIDTH - 10,
+        y: HEIGHT - 50
+    };
+    let zHeight=(HEIGHT-80)/max;
+    let zWidth=10;
+    for(let i=0;i&lt;data.length;i++)
+    {
+        if(i==0)
+        {
+            context.fillStyle=&quot;green&quot;;
+        }
+        else if(i==5)
+        {
+            context.fillStyle=&quot;gray&quot;;
+        }
+        else if(i==6)
+        {
+            context.fillStyle=&quot;red&quot;;
+        }
+        context.fillRect(origin.x*1+i*27,origin.y*1-data[i]*1*zHeight,zWidth*1,data[i]*zHeight*1);
+        context.fillText(data[i],origin.x*1+i*27,origin.y*1-data[i]*1*zHeight-5,10);
+    }
+    let name=[&quot;跌停&quot;,&quot;≤-7&quot;,&quot;-7~-5&quot;,&quot;-5~-3&quot;,&quot;-3~0&quot;,&quot;0&quot;,&quot;0~3&quot;,&quot;3~5&quot;,&quot;5~7&quot;,&quot;≥7&quot;,&quot;涨停&quot;];
+    for(let i=0;i&lt;name.length;i++)
+    {
+        context.fillStyle=&quot;black&quot;;
+        context.fillText(name[i],origin.x*1+i*27,origin.y*1+12,10);
+    }
+    context.fillStyle=&quot;green&quot;
+    context.fillRect(5,origin.y*1+20,130,5);
+    context.fillText(&quot;下跌&quot;+String(down),5,origin.y*1+45,40);
+    context.fillStyle=&quot;gray&quot;;
+    context.fillRect(140,origin.y*1+20,20,5);
+    context.fillStyle=&quot;red&quot;;
+    context.fillRect(165,origin.y*1+20,130,5);
+    context.fillText(&quot;上涨&quot;+String(up),250,origin.y*1+45,40);
+    context.stroke();
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[html学习]]></title>
         <id>https://Carl1435.github.io/post/chang-shi-yi-xia/</id>
@@ -124,6 +249,21 @@
 &lt;var&gt;:变量<br>
 &lt;video&gt;:视频<br>
 &lt;wbr&gt;:规定在文本中的何处适合添加换行符。</p>
+<p>标签语义化：很多标签功能相同，还有一些标签没有明显功能，他们的功能就是带上语义，便于搜索引擎优化，团队开发</p>
+<p>块级元素的特点:<br>
+1.总是从新的一行开始<br>
+2.高度、宽度都是可控的<br>
+3.宽度没有设置时，默认为100%<br>
+4.块级元素中可以包含块级元素和行内元素</p>
+<p>行内元素的特点:<br>
+1.和其他元素在一行中；<br>
+2.高度、宽度以及内边距都是不可控的<br>
+3.宽高就是内容的高度，不可以改变<br>
+4.行内元素只能行内元素，不能包含块级元素<br>
+借鉴于:https://www.cnblogs.com/yxm440/p/7667539.html</p>
+<p>行-&gt;块:display:block 、设置float、使用position:absolute，与position:fixed<br>
+块-&gt;行：display：inline<br>
+inline-block?</p>
 ]]></content>
     </entry>
     <entry>

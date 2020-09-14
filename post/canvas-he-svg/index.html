@@ -2,23 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>canvas和svg | Gridea</title>
 <link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1600057431229">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="canvas和svg | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你 ！🤝
-
-🏠 关于本
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
+    <meta name="description" content="canvas：
+之前有用canvas画过折线图，所以还比较熟。
+1.在html页面上定义好canvas位置和大小
+2.在JavaScript里画图
+1 固定格式
+canvas=document.getElementById（）
+let co..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -81,46 +80,124 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              canvas和svg
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2020-09-11
               </span>
               <span>
-                1 min read
+                3 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你 ！🤝</p>
-</blockquote>
-<h2 id="关于本">🏠 关于本</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                <p>canvas：<br>
+之前有用canvas画过折线图，所以还比较熟。<br>
+1.在html页面上定义好canvas位置和大小<br>
+2.在JavaScript里画图</p>
+<p>1 固定格式<br>
+canvas=document.getElementById（）<br>
+let context = canvas.getContext(&quot;2d&quot;);<br>
+2 消除锯齿（就放大画，然后缩小显示）<br>
+canvas.style.width=WIDTH;<br>
+canvas.style.height=HEIGHT;<br>
+canvas.height=HEIGHT<em>4;<br>
+canvas.width=WIDTH</em>4;<br>
+context.scale(4,4);<br>
+3开始画<br>
+moveTo<br>
+lineTo<br>
+用那些给的函数画就可以了</p>
+<p>贴一段代码（当初查了好久的百度才写好一个画图的函数，居然不知道用echars，唉）</p>
+<pre><code class="language-JavaScript">function drawChart2(mydata)
+{
+    let canvas = document.getElementById('myCanvas3');
+    let data =[];
+    let max=0;
+    for(let i=4;i&lt;15;i++)
+    {
+        data[i-4]=mydata[i]
+    }
+    max=mydata[0];
+    let up=mydata[1];
+    let down=mydata[2];
+    let context = canvas.getContext(&quot;2d&quot;);
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+    canvas.style.width=WIDTH;
+    canvas.style.height=HEIGHT;
+    canvas.height=HEIGHT*4;
+    canvas.width=WIDTH*4;
+    context.scale(4,4);
+    var axisYStart = {// y轴的终点坐标值
+        x: 10,
+        y: 30
+    };
+    var origin = {// 原点坐标值(x轴与y轴相交点)
+        x: 10,
+        y: HEIGHT - 50
+    };
+    var axisXStart = {// x轴的终点坐标值
+        x: WIDTH - 10,
+        y: HEIGHT - 50
+    };
+    let zHeight=(HEIGHT-80)/max;
+    let zWidth=10;
+    for(let i=0;i&lt;data.length;i++)
+    {
+        if(i==0)
+        {
+            context.fillStyle=&quot;green&quot;;
+        }
+        else if(i==5)
+        {
+            context.fillStyle=&quot;gray&quot;;
+        }
+        else if(i==6)
+        {
+            context.fillStyle=&quot;red&quot;;
+        }
+        context.fillRect(origin.x*1+i*27,origin.y*1-data[i]*1*zHeight,zWidth*1,data[i]*zHeight*1);
+        context.fillText(data[i],origin.x*1+i*27,origin.y*1-data[i]*1*zHeight-5,10);
+    }
+    let name=[&quot;跌停&quot;,&quot;≤-7&quot;,&quot;-7~-5&quot;,&quot;-5~-3&quot;,&quot;-3~0&quot;,&quot;0&quot;,&quot;0~3&quot;,&quot;3~5&quot;,&quot;5~7&quot;,&quot;≥7&quot;,&quot;涨停&quot;];
+    for(let i=0;i&lt;name.length;i++)
+    {
+        context.fillStyle=&quot;black&quot;;
+        context.fillText(name[i],origin.x*1+i*27,origin.y*1+12,10);
+    }
+    context.fillStyle=&quot;green&quot;
+    context.fillRect(5,origin.y*1+20,130,5);
+    context.fillText(&quot;下跌&quot;+String(down),5,origin.y*1+45,40);
+    context.fillStyle=&quot;gray&quot;;
+    context.fillRect(140,origin.y*1+20,20,5);
+    context.fillStyle=&quot;red&quot;;
+    context.fillRect(165,origin.y*1+20,130,5);
+    context.fillText(&quot;上涨&quot;+String(up),250,origin.y*1+45,40);
+    context.stroke();
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC">🏠 关于本</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://Carl1435.github.io/post/chang-shi-yi-xia/">
+              <h3 class="post-title">
+                html学习
+              </h3>
+            </a>
+          </div>
         
 
         
