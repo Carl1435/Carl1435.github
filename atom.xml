@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-14T04:29:00.269Z</updated>
+    <updated>2020-10-06T08:18:10.492Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -10,6 +10,160 @@
     <logo>https://Carl1435.github.io/images/avatar.png</logo>
     <icon>https://Carl1435.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[sass学习]]></title>
+        <id>https://Carl1435.github.io/post/sass-xue-xi/</id>
+        <link href="https://Carl1435.github.io/post/sass-xue-xi/">
+        </link>
+        <updated>2020-10-06T07:00:47.000Z</updated>
+        <content type="html"><![CDATA[<p>主要是对官网文档的整理<br>
+变量定义引用：</p>
+<pre><code class="language-sass">$highlight-color: #F90;
+.selected {
+  border: 1px solid $highlight-color;
+}
+</code></pre>
+<p>嵌套：</p>
+<pre><code class="language-sass">#content {
+  article {
+    h1 { color: #333 }
+    p { margin-bottom: 1.4em }
+  }
+  aside { background-color: #EEE }
+}
+</code></pre>
+<p>父选择器的标识符&amp;:主要用于对伪类，就是在编译的时候直接用父元素把&amp;替换，而不会加一个空格，还可以在前面加上其他的选择器，也会类似把&amp;替换</p>
+<pre><code class="language-sass">#art1 a {
+  color: blue; }
+  #art1 a :hover {
+    color: red; }
+</code></pre>
+<p>群组选择器</p>
+<pre><code class="language-sass">.container {
+  h1, h2, h3 {margin-bottom: .8em}
+}
+</code></pre>
+<p>嵌套属性：把属性名从中划线-的地方断开，在根属性后边添加一个冒号:，紧跟一个{ }块，把子属性部分写在这个{ }块中。</p>
+<pre><code class="language-sass">nav {
+  border: {
+  style: solid;
+  width: 1px;
+  color: #ccc;
+  }
+}
+</code></pre>
+<p>导入：@import</p>
+<pre><code class="language-sass">@import &quot;style&quot;;
+</code></pre>
+<p>部分文件：<br>
+文件名前加_，引入时不用加_，编译时不会被编译</p>
+<p>默认变量值：类似!important</p>
+<pre><code class="language-sass">$fancybox-width: 400px !default;
+.fancybox {
+width: $fancybox-width;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些乱七八糟的知识点]]></title>
+        <id>https://Carl1435.github.io/post/yi-xie-luan-qi-ba-zao-de-zhi-shi-dian/</id>
+        <link href="https://Carl1435.github.io/post/yi-xie-luan-qi-ba-zao-de-zhi-shi-dian/">
+        </link>
+        <updated>2020-09-16T01:31:47.000Z</updated>
+        <content type="html"><![CDATA[<p>发生回流条件：添加或删除可见的dom元素<br>
+元素位置尺寸  内容  发生变化<br>
+页面最开始渲染<br>
+浏览器尺寸变化<br>
+减少重绘回流：<br>
+  使用el.style.cssText   el.className<br>
+  避免触发同步布局事件，在使用offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight这些属性时要注意会刷新渲染队列<br>
+  对于复杂动画效果,使用绝对定位让其脱离文档流<br>
+  使用css3硬件加速</p>
+<p>文档流：内联元素默认从左到右流，遇到阻碍或者宽度不够自动换行，继续按照从左到右的方式布局。块级元素单独占据一行，并按照从上到下的方式布局。<br>
+脱离文档流：即元素不占据位置，后面的元素自动补上，但可能会发生覆盖<br>
+方式：float、position: absolute;、position: fixed;</p>
+<p>可以一起写的：<br>
+border  边宽  样式 颜色</p>
+<pre><code class="language-css">border:1px solid #000 
+</code></pre>
+<p>background<br>
+font</p>
+<pre><code class="language-css">font: small-caps bold 2rem/1.5 sans-serif;
+</code></pre>
+<p>padding margin：上右下左<br>
+隐藏元素：</p>
+<pre><code class="language-css">display:none/*脱离文档流*/
+visibility:hidden/*不脱离*/
+hidden/*脱离文档流*/
+opacity:0/*不脱离,接受JavaScript事件，调节透明度*/
+overflow:hidden/*把父级元素宽和高设为0*/
+transform:scale(0);/*放缩*/
+transform: rotateX(90deg);/*旋转*/
+transform: skew(90deg);/*旋转*/
+/*利用定位元素可以覆盖普通流元素的特性。为元素的before伪元素设置相同的尺寸，通过控制伪元素的定位属性，实现显隐效果*/
+/*移到窗口外*/
+</code></pre>
+<p>水平居中<br>
+1<br>
+父元素设置：text-align:center<br>
+子元素：display: inline-block;<br>
+2<br>
+通过绝对定位，父元素要设置高度，不然会重叠<br>
+3<br>
+弹性盒子,在父元素设置</p>
+<pre><code class="language-css">display: flex;
+  justify-content: center;
+</code></pre>
+<p>或者<br>
+父</p>
+<pre><code class="language-css">display: flex;
+</code></pre>
+<p>子</p>
+<pre><code class="language-css">margin:0 auto;
+</code></pre>
+<p>垂直居中<br>
+1<br>
+单行文本设置 line-height<br>
+2<br>
+父元素设置</p>
+<pre><code class="language-css">display: table-cell;
+  vertical-align: middle;
+</code></pre>
+<p>3<br>
+弹性盒子</p>
+<pre><code class="language-css">display: flex;
+align-items: center;
+</code></pre>
+<p>水平垂直居中<br>
+1<br>
+单行文本<br>
+text-align + line-height<br>
+2</p>
+<pre><code class="language-css">.parent{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.child{
+    display: inline-block;
+}
+</code></pre>
+<p>3<br>
+绝对定位+</p>
+<pre><code class="language-css">        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+</code></pre>
+<p>或者</p>
+<pre><code class="language-css">    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSS]]></title>
         <id>https://Carl1435.github.io/post/css/</id>
@@ -27,18 +181,113 @@ multi-column布局：文本自动填满每个列，无法对每个列进行设�
   flex-wrap：控制是否允许元素换行，不允许的话会等比例缩放</p>
 <p>grid布局：可以同时控制行和列对齐<br>
   display: grid;<br>
-  grid-template-columns:<br>
-  </p>
+  grid-template-columns:列宽<br>
+  grid-template-rows:行高</p>
 <p>动画<br>
-animation-name：指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。<br>
+检测动画支持：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Detecting_CSS_animation_support">这里</a></p>
+<p>animation-name：指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。<br>
 animation-duration：播放一个动画要用的时长<br>
 animation-timing-function：设置动画的速度样式<br>
 animation-delay：动画何时开始，设为负x时会从x秒直接开始播放<br>
-animation-iteration-count：动画运行次数，可以是小数，不可以是负数<br>
-animation-direction：是否为反向播放<br>
-animation-fill-mode：动画开始和结束时的样式，forwards：保留最后一帧，backwards：在<br>
-  animation-delay期间也会保持第一帧<br>
-animation-play-state：设置动画的暂停和播放。</p>
+animation-iteration-count：动画运行次数，可以是小数，不可以是负数，infinite<br>
+animation-direction：设置播放方向<br>
+animation-fill-mode：动画开始和结束时的样式，forwards：保留最后一帧，backwards：在animation-delay期间也会保持第一帧<br>
+animation-play-state：设置动画的暂停和播放。<br>
+简写：播放时间animation-duration    速度样式animation-timing-function    延迟播放animation-delay   播放次数animation-iteration-count   播放方向：animation-direction    开始结束的样式animation-fill-mode    暂停开始：animation-play-state</p>
+<pre><code class="language-css">animation: 3s ease-in 1s infinite reverse both running slidein;
+</code></pre>
+<p>根据用户设置来消除动画</p>
+<pre><code class="language-CSS">.animation {
+ animation: vibrate 0.3s linear infinite both; 
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .animation {
+   animation: none;
+ }
+}
+</code></pre>
+<p>层叠：优先级相同 先写的样式被覆盖<br>
+优先级：具体的优先级高  !important（尽量别用）<br>
+继承：在父元素中的样式有些会被继承</p>
+<p>选择器：id:#para1 class: .center 对类：p.center<br>
+属性选择器：a[title]<br>
+伪类和伪元素<br>
+选择器优先级：<br>
+内联样式，优先级1000<br>
+id选择器，优先级100<br>
+类和伪类，优先级10<br>
+元素选择器，优先级1<br>
+通配选择器，优先级0<br>
+有多个选择器时把优先级相加</p>
+<p>后代选择器	article p	后代运算符<br>
+子代选择器	article &gt; p	子代选择器<br>
+相邻兄弟选择器	h1 + p	相邻兄弟<br>
+通用兄弟选择器	h1 ~ p	通用兄弟</p>
+<p>position:<br>
+  static：默认<br>
+  relative：相对正常位置定位，正常位置占据的空间不变<br>
+  fixed：位置固定，脱离文档流<br>
+  absolute：相对最近已定位父元素定位<br>
+  sticky：根据滚动位置来定位</p>
+<p>background：<br>
+background-clip：背景是否填充padding border等  border-box; &gt;padding-box; &gt;content-box;只是对背景进行裁剪，不涉及位置调整<br>
+background-origin:调整图片的位置.值与上面相同<br>
+background-position:调整图片位置<br>
+background-size:调整图片大小<br>
+background-attachment:<br>
+scroll;不随元素移动，随外层移动<br>
+fixed;不随元素移动，不随外层移动<br>
+local;随元素移动，随外层移动<br>
+简写规则：<br>
+&lt;bg-size&gt; 只能紧接着 <position> 出现，以&quot;/&quot;分割，如： &quot;center/80%&quot;.<br>
+&lt;box&gt; 可能出现 0 次、1 次或 2 次。如果出现 1 次，它同时设定 background-origin 和 background-clip。如果出现 2 次，第一次的出现设置 background-origin，第二次的出现设置 background-clip。<br>
+&lt;background-color&gt; 只能写在最后</p>
+<p>溢出：<br>
+overflow:hidden scroll auto<br>
+overflow-y<br>
+overflow-x<br>
+字符间断行：word-break overflow-wrap</p>
+<p>opacity和rgba区别:opacity可以被继承</p>
+<p>css的单位：<br>
+em:在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width<br>
+函数：calc(),符号两边的空格很重要</p>
+<pre><code class="language-css">.box {
+  width: calc(20% + 100px);
+}
+</code></pre>
+<p>css3<br>
+border-radius:圆角边框</p>
+<pre><code class="language-css">border-radius:30px;
+</code></pre>
+<p>box-shadow：盒子阴影   向右偏移 向下偏移  模糊 颜色</p>
+<pre><code class="language-css">div
+{
+box-shadow: 10px 10px 5px #888888;
+}
+</code></pre>
+<p>border-image：边界图片</p>
+<p>transition:过渡<br>
+时间：第一个是持续时间，第二个是延迟时间<br>
+改变的属性：all width background</p>
+<pre><code class="language-css">div
+{
+width:100px;
+height:100px;
+background:blue;
+transition:width 2s;
+-moz-transition:width 2s; /* Firefox 4 */
+-webkit-transition:width 2s; /* Safari and Chrome */
+-o-transition:width 2s; /* Opera */
+}
+
+div:hover
+{
+width:300px;
+}
+</code></pre>
+<p>过渡时间函数<br>
+transform:对元素进行旋转，缩放，倾斜或平移</p>
 ]]></content>
     </entry>
     <entry>
@@ -248,7 +497,14 @@ lineTo<br>
 &lt;ul&gt;:html无序列表<br>
 &lt;var&gt;:变量<br>
 &lt;video&gt;:视频<br>
+controls:使用浏览器自带的控件<br>
+autoplay：直接播放，chrome不支持<br>
+loop：循环<br>
+muted：静音<br>
+poster：封面<br>
+preload：缓存方式<br>
 &lt;wbr&gt;:规定在文本中的何处适合添加换行符。</p>
+<p>转义字符：https://www.cnblogs.com/softidea/p/5366711.html</p>
 <p>标签语义化：很多标签功能相同，还有一些标签没有明显功能，他们的功能就是带上语义，便于搜索引擎优化，团队开发</p>
 <p>块级元素的特点:<br>
 1.总是从新的一行开始<br>

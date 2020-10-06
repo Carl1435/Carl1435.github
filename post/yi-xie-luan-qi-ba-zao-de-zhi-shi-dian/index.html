@@ -2,22 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>canvas和svg | Gridea</title>
+<title>一些乱七八糟的知识点 | Gridea</title>
 <link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1601972286761">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="canvas和svg | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="一些乱七八糟的知识点 | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="canvas：
-之前有用canvas画过折线图，所以还比较熟。
-1.在html页面上定义好canvas位置和大小
-2.在JavaScript里画图
-1 固定格式
-canvas=document.getElementById（）
-let co..." />
+    <meta name="description" content="发生回流条件：添加或删除可见的dom元素
+元素位置尺寸  内容  发生变化
+页面最开始渲染
+浏览器尺寸变化
+减少重绘回流：
+  使用el.style.cssText   el.className
+  避免触发同步布局事件，在使用offset..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -80,11 +80,11 @@ let co..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              canvas和svg
+              一些乱七八糟的知识点
             </h2>
             <div class="post-info">
               <span>
-                2020-09-11
+                2020-09-16
               </span>
               <span>
                 3 min read
@@ -94,91 +94,96 @@ let co..." />
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>canvas：<br>
-之前有用canvas画过折线图，所以还比较熟。<br>
-1.在html页面上定义好canvas位置和大小<br>
-2.在JavaScript里画图</p>
-<p>1 固定格式<br>
-canvas=document.getElementById（）<br>
-let context = canvas.getContext(&quot;2d&quot;);<br>
-2 消除锯齿（就放大画，然后缩小显示）<br>
-canvas.style.width=WIDTH;<br>
-canvas.style.height=HEIGHT;<br>
-canvas.height=HEIGHT<em>4;<br>
-canvas.width=WIDTH</em>4;<br>
-context.scale(4,4);<br>
-3开始画<br>
-moveTo<br>
-lineTo<br>
-用那些给的函数画就可以了</p>
-<p>贴一段代码（当初查了好久的百度才写好一个画图的函数，居然不知道用echars，唉）</p>
-<pre><code class="language-JavaScript">function drawChart2(mydata)
-{
-    let canvas = document.getElementById('myCanvas3');
-    let data =[];
-    let max=0;
-    for(let i=4;i&lt;15;i++)
-    {
-        data[i-4]=mydata[i]
-    }
-    max=mydata[0];
-    let up=mydata[1];
-    let down=mydata[2];
-    let context = canvas.getContext(&quot;2d&quot;);
-    const WIDTH = canvas.width;
-    const HEIGHT = canvas.height;
-    canvas.style.width=WIDTH;
-    canvas.style.height=HEIGHT;
-    canvas.height=HEIGHT*4;
-    canvas.width=WIDTH*4;
-    context.scale(4,4);
-    var axisYStart = {// y轴的终点坐标值
-        x: 10,
-        y: 30
-    };
-    var origin = {// 原点坐标值(x轴与y轴相交点)
-        x: 10,
-        y: HEIGHT - 50
-    };
-    var axisXStart = {// x轴的终点坐标值
-        x: WIDTH - 10,
-        y: HEIGHT - 50
-    };
-    let zHeight=(HEIGHT-80)/max;
-    let zWidth=10;
-    for(let i=0;i&lt;data.length;i++)
-    {
-        if(i==0)
-        {
-            context.fillStyle=&quot;green&quot;;
-        }
-        else if(i==5)
-        {
-            context.fillStyle=&quot;gray&quot;;
-        }
-        else if(i==6)
-        {
-            context.fillStyle=&quot;red&quot;;
-        }
-        context.fillRect(origin.x*1+i*27,origin.y*1-data[i]*1*zHeight,zWidth*1,data[i]*zHeight*1);
-        context.fillText(data[i],origin.x*1+i*27,origin.y*1-data[i]*1*zHeight-5,10);
-    }
-    let name=[&quot;跌停&quot;,&quot;≤-7&quot;,&quot;-7~-5&quot;,&quot;-5~-3&quot;,&quot;-3~0&quot;,&quot;0&quot;,&quot;0~3&quot;,&quot;3~5&quot;,&quot;5~7&quot;,&quot;≥7&quot;,&quot;涨停&quot;];
-    for(let i=0;i&lt;name.length;i++)
-    {
-        context.fillStyle=&quot;black&quot;;
-        context.fillText(name[i],origin.x*1+i*27,origin.y*1+12,10);
-    }
-    context.fillStyle=&quot;green&quot;
-    context.fillRect(5,origin.y*1+20,130,5);
-    context.fillText(&quot;下跌&quot;+String(down),5,origin.y*1+45,40);
-    context.fillStyle=&quot;gray&quot;;
-    context.fillRect(140,origin.y*1+20,20,5);
-    context.fillStyle=&quot;red&quot;;
-    context.fillRect(165,origin.y*1+20,130,5);
-    context.fillText(&quot;上涨&quot;+String(up),250,origin.y*1+45,40);
-    context.stroke();
+                <p>发生回流条件：添加或删除可见的dom元素<br>
+元素位置尺寸  内容  发生变化<br>
+页面最开始渲染<br>
+浏览器尺寸变化<br>
+减少重绘回流：<br>
+  使用el.style.cssText   el.className<br>
+  避免触发同步布局事件，在使用offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight这些属性时要注意会刷新渲染队列<br>
+  对于复杂动画效果,使用绝对定位让其脱离文档流<br>
+  使用css3硬件加速</p>
+<p>文档流：内联元素默认从左到右流，遇到阻碍或者宽度不够自动换行，继续按照从左到右的方式布局。块级元素单独占据一行，并按照从上到下的方式布局。<br>
+脱离文档流：即元素不占据位置，后面的元素自动补上，但可能会发生覆盖<br>
+方式：float、position: absolute;、position: fixed;</p>
+<p>可以一起写的：<br>
+border  边宽  样式 颜色</p>
+<pre><code class="language-css">border:1px solid #000 
+</code></pre>
+<p>background<br>
+font</p>
+<pre><code class="language-css">font: small-caps bold 2rem/1.5 sans-serif;
+</code></pre>
+<p>padding margin：上右下左<br>
+隐藏元素：</p>
+<pre><code class="language-css">display:none/*脱离文档流*/
+visibility:hidden/*不脱离*/
+hidden/*脱离文档流*/
+opacity:0/*不脱离,接受JavaScript事件，调节透明度*/
+overflow:hidden/*把父级元素宽和高设为0*/
+transform:scale(0);/*放缩*/
+transform: rotateX(90deg);/*旋转*/
+transform: skew(90deg);/*旋转*/
+/*利用定位元素可以覆盖普通流元素的特性。为元素的before伪元素设置相同的尺寸，通过控制伪元素的定位属性，实现显隐效果*/
+/*移到窗口外*/
+</code></pre>
+<p>水平居中<br>
+1<br>
+父元素设置：text-align:center<br>
+子元素：display: inline-block;<br>
+2<br>
+通过绝对定位，父元素要设置高度，不然会重叠<br>
+3<br>
+弹性盒子,在父元素设置</p>
+<pre><code class="language-css">display: flex;
+  justify-content: center;
+</code></pre>
+<p>或者<br>
+父</p>
+<pre><code class="language-css">display: flex;
+</code></pre>
+<p>子</p>
+<pre><code class="language-css">margin:0 auto;
+</code></pre>
+<p>垂直居中<br>
+1<br>
+单行文本设置 line-height<br>
+2<br>
+父元素设置</p>
+<pre><code class="language-css">display: table-cell;
+  vertical-align: middle;
+</code></pre>
+<p>3<br>
+弹性盒子</p>
+<pre><code class="language-css">display: flex;
+align-items: center;
+</code></pre>
+<p>水平垂直居中<br>
+1<br>
+单行文本<br>
+text-align + line-height<br>
+2</p>
+<pre><code class="language-css">.parent{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
+.child{
+    display: inline-block;
+}
+</code></pre>
+<p>3<br>
+绝对定位+</p>
+<pre><code class="language-css">        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+</code></pre>
+<p>或者</p>
+<pre><code class="language-css">    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 </code></pre>
 
               </div>
@@ -192,9 +197,9 @@ lineTo<br>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://Carl1435.github.io/post/chang-shi-yi-xia/">
+            <a href="https://Carl1435.github.io/post/css/">
               <h3 class="post-title">
-                html学习
+                CSS
               </h3>
             </a>
           </div>

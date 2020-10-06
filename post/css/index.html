@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS | Gridea</title>
-<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1600057431229">
+<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1601972286761">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="CSS | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
@@ -24,7 +24,7 @@ multi-column布局：文本自动填满每个列，无法对每个列进行设�
       <div class="main-content">
         <div class="site-header">
   <a href="https://Carl1435.github.io">
-  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1600057431229" alt="">
+  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1601972286761" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -84,7 +84,7 @@ multi-column布局：文本自动填满每个列，无法对每个列进行设�
                 2020-09-14
               </span>
               <span>
-                2 min read
+                5 min read
               </span>
               
             </div>
@@ -102,18 +102,113 @@ multi-column布局：文本自动填满每个列，无法对每个列进行设�
   flex-wrap：控制是否允许元素换行，不允许的话会等比例缩放</p>
 <p>grid布局：可以同时控制行和列对齐<br>
   display: grid;<br>
-  grid-template-columns:<br>
-  </p>
+  grid-template-columns:列宽<br>
+  grid-template-rows:行高</p>
 <p>动画<br>
-animation-name：指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。<br>
+检测动画支持：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Detecting_CSS_animation_support">这里</a></p>
+<p>animation-name：指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。<br>
 animation-duration：播放一个动画要用的时长<br>
 animation-timing-function：设置动画的速度样式<br>
 animation-delay：动画何时开始，设为负x时会从x秒直接开始播放<br>
-animation-iteration-count：动画运行次数，可以是小数，不可以是负数<br>
-animation-direction：是否为反向播放<br>
-animation-fill-mode：动画开始和结束时的样式，forwards：保留最后一帧，backwards：在<br>
-  animation-delay期间也会保持第一帧<br>
-animation-play-state：设置动画的暂停和播放。</p>
+animation-iteration-count：动画运行次数，可以是小数，不可以是负数，infinite<br>
+animation-direction：设置播放方向<br>
+animation-fill-mode：动画开始和结束时的样式，forwards：保留最后一帧，backwards：在animation-delay期间也会保持第一帧<br>
+animation-play-state：设置动画的暂停和播放。<br>
+简写：播放时间animation-duration    速度样式animation-timing-function    延迟播放animation-delay   播放次数animation-iteration-count   播放方向：animation-direction    开始结束的样式animation-fill-mode    暂停开始：animation-play-state</p>
+<pre><code class="language-css">animation: 3s ease-in 1s infinite reverse both running slidein;
+</code></pre>
+<p>根据用户设置来消除动画</p>
+<pre><code class="language-CSS">.animation {
+ animation: vibrate 0.3s linear infinite both; 
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .animation {
+   animation: none;
+ }
+}
+</code></pre>
+<p>层叠：优先级相同 先写的样式被覆盖<br>
+优先级：具体的优先级高  !important（尽量别用）<br>
+继承：在父元素中的样式有些会被继承</p>
+<p>选择器：id:#para1 class: .center 对类：p.center<br>
+属性选择器：a[title]<br>
+伪类和伪元素<br>
+选择器优先级：<br>
+内联样式，优先级1000<br>
+id选择器，优先级100<br>
+类和伪类，优先级10<br>
+元素选择器，优先级1<br>
+通配选择器，优先级0<br>
+有多个选择器时把优先级相加</p>
+<p>后代选择器	article p	后代运算符<br>
+子代选择器	article &gt; p	子代选择器<br>
+相邻兄弟选择器	h1 + p	相邻兄弟<br>
+通用兄弟选择器	h1 ~ p	通用兄弟</p>
+<p>position:<br>
+  static：默认<br>
+  relative：相对正常位置定位，正常位置占据的空间不变<br>
+  fixed：位置固定，脱离文档流<br>
+  absolute：相对最近已定位父元素定位<br>
+  sticky：根据滚动位置来定位</p>
+<p>background：<br>
+background-clip：背景是否填充padding border等  border-box; &gt;padding-box; &gt;content-box;只是对背景进行裁剪，不涉及位置调整<br>
+background-origin:调整图片的位置.值与上面相同<br>
+background-position:调整图片位置<br>
+background-size:调整图片大小<br>
+background-attachment:<br>
+scroll;不随元素移动，随外层移动<br>
+fixed;不随元素移动，不随外层移动<br>
+local;随元素移动，随外层移动<br>
+简写规则：<br>
+&lt;bg-size&gt; 只能紧接着 <position> 出现，以&quot;/&quot;分割，如： &quot;center/80%&quot;.<br>
+&lt;box&gt; 可能出现 0 次、1 次或 2 次。如果出现 1 次，它同时设定 background-origin 和 background-clip。如果出现 2 次，第一次的出现设置 background-origin，第二次的出现设置 background-clip。<br>
+&lt;background-color&gt; 只能写在最后</p>
+<p>溢出：<br>
+overflow:hidden scroll auto<br>
+overflow-y<br>
+overflow-x<br>
+字符间断行：word-break overflow-wrap</p>
+<p>opacity和rgba区别:opacity可以被继承</p>
+<p>css的单位：<br>
+em:在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width<br>
+函数：calc(),符号两边的空格很重要</p>
+<pre><code class="language-css">.box {
+  width: calc(20% + 100px);
+}
+</code></pre>
+<p>css3<br>
+border-radius:圆角边框</p>
+<pre><code class="language-css">border-radius:30px;
+</code></pre>
+<p>box-shadow：盒子阴影   向右偏移 向下偏移  模糊 颜色</p>
+<pre><code class="language-css">div
+{
+box-shadow: 10px 10px 5px #888888;
+}
+</code></pre>
+<p>border-image：边界图片</p>
+<p>transition:过渡<br>
+时间：第一个是持续时间，第二个是延迟时间<br>
+改变的属性：all width background</p>
+<pre><code class="language-css">div
+{
+width:100px;
+height:100px;
+background:blue;
+transition:width 2s;
+-moz-transition:width 2s; /* Firefox 4 */
+-webkit-transition:width 2s; /* Safari and Chrome */
+-o-transition:width 2s; /* Opera */
+}
+
+div:hover
+{
+width:300px;
+}
+</code></pre>
+<p>过渡时间函数<br>
+transform:对元素进行旋转，缩放，倾斜或平移</p>
 
               </div>
               <div class="toc-container">
