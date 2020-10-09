@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-10-06T08:18:10.492Z</updated>
+    <updated>2020-10-09T10:50:57.170Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -10,6 +10,53 @@
     <logo>https://Carl1435.github.io/images/avatar.png</logo>
     <icon>https://Carl1435.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[JS中的prototype、__proto__与constructor]]></title>
+        <id>https://Carl1435.github.io/post/js-zhong-de-prototype__proto__-yu-constructor/</id>
+        <link href="https://Carl1435.github.io/post/js-zhong-de-prototype__proto__-yu-constructor/">
+        </link>
+        <updated>2020-10-09T10:10:08.000Z</updated>
+        <content type="html"><![CDATA[<p>参考https://blog.csdn.net/cc18868876837/article/details/81211729，这里只是说一下我的理解。<br>
+  <strong>proto</strong>：对象拥有，指向原型（父）对象。作用：如果在在这个对象中找不到某个属性，就会去它的__proto__所指向的对象中去找。<br>
+  constructor：对象拥有，指向对象的构造函数。最终所有对象的构造函数都会指向function()。<br>
+  prototype:函数拥有(因为函数也是对象所以函数也有上面两个属性),函数的原型对象。作用：存放了该函数所实例化的对象所拥有的方法和属性。</p>
+<pre><code class="language-JavaScript">//代码
+      function Person(){
+      this.name;
+    }
+    Person.prototype.say=function(){
+      console.log(&quot;hello&quot;);
+    }
+    var person=new Person();
+    console.log(&quot;Person.__proto__&quot;)
+    console.log(Person.__proto__);
+    console.log(&quot;Function.prototype&quot;)
+    console.log(Function.prototype);
+    console.log(&quot;Person.prototype.__proto__&quot;)
+    console.log(Person.prototype.__proto__);
+    console.log(&quot;Object.prototype&quot;)
+    console.log(Object.prototype);
+    console.log(&quot;person.__proto__&quot;)
+    console.log(person.__proto__);
+    console.log(&quot;Person.prototype&quot;)
+    console.log(Person.prototype);
+    console.log(&quot;Person.prototype.constructor&quot;)
+    console.log(Person.prototype.constructor);
+    console.log(&quot;Person&quot;)
+    console.log(Person);
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Carl1435.github.io/post-images/1602240532777.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScript学习]]></title>
+        <id>https://Carl1435.github.io/post/javascript-xue-xi/</id>
+        <link href="https://Carl1435.github.io/post/javascript-xue-xi/">
+        </link>
+        <updated>2020-10-07T14:24:58.000Z</updated>
+        <content type="html"><![CDATA[<p>一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[sass学习]]></title>
         <id>https://Carl1435.github.io/post/sass-xue-xi/</id>
