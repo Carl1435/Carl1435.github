@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaScript学习 | Gridea</title>
-<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1602240649775">
+<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1603673911324">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JavaScript学习 | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
@@ -12,7 +12,8 @@
 
 
     <meta name="description" content="一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起
-" />
+获取页面元素：
+var..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -22,7 +23,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://Carl1435.github.io">
-  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1602240649775" alt="">
+  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1603673911324" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -82,14 +83,100 @@
                 2020-10-07
               </span>
               <span>
-                1 min read
+                3 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起</p>
+                <p>一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起<br>
+获取页面元素：</p>
+<pre><code class="language-JavaScript">var li = document.getElementsByTagName('li');//标签名
+var li = document.getElementsById('li');//id
+var li = document.getElementsByClassName('li');//类名
+var li = document.querySelector('li');//类似css选择器
+var li = document.querySelectorAll('li');
+</code></pre>
+<p>删除一个元素：（在只知道元素本身的情况下）:</p>
+<pre><code class="language-JavaScript">var linkPara = document.querySelector('p');
+linkPara.parentNode.removeChild(linkPara);
+</code></pre>
+<p>更改css样式：</p>
+<pre><code class="language-JavaScript">para.style.color = 'white';
+para.setAttribute('class', 'highlight');
+</code></pre>
+<p>ajax格式：</p>
+<pre><code class="language-JavaScript">var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+  var superHeroes = request.response;
+  populateHeader(superHeroes);
+  showHeroes(superHeroes);
+}
+</code></pre>
+<p>canvas操作：</p>
+<pre><code class="language-JavaScript">var canvas = document.querySelector('.myCanvas');//获取画布
+var width = canvas.width //= window.innerWidth;加上这句可以使画布充满页面//获取画布宽高
+var height = canvas.height //= window.innerHeight;
+var ctx = canvas.getContext('2d');//
+ctx.fillStyle = 'rgb(255, 0, 0)';//指定颜色
+ctx.fillRect(50, 50, 100, 150);//画实心矩形参数意义：距离左上角的x，y和矩形宽高
+ctx.lineWidth = 5;//调整线条宽度
+ctx.strokeStyle = 'rgb(255, 255, 255)';//空心，其他同上
+ctx.strokeRect(25, 25, 175, 200);
+//画一个三角形
+function degToRad(degrees) {
+  return degrees * Math.PI / 180;
+};//把角度转换成弧度
+ctx.fillStyle = 'rgb(255, 0, 0)';
+ctx.beginPath();
+ctx.moveTo(50, 50);//移动到起始点
+ctx.lineTo(150, 50);
+var triHeight = 50 * Math.tan(degToRad(60));
+ctx.lineTo(100, 50+triHeight);
+ctx.lineTo(50, 50);
+ctx.fill();
+ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);//画圆，圆心x，y，半径，起始终点角度，顺逆时针
+ctx.lineWidth = 1;//空心文字
+ctx.font = '36px arial';
+ctx.strokeText('Canvas text', 50, 50);
+
+ctx.fillStyle = 'red';//实心文字
+ctx.font = '48px georgia';
+ctx.fillText('Canvas text', 50, 150);
+//插入图片
+var image = new Image();
+image.src = 'firefox.png'//创建图片对象
+image.onload = function() {
+  ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
+}//1，2裁剪起始点 3，4裁剪宽高，5，6在画布中的起始点，画布中图片表示出来的宽高
+
+动画效果
+ctx.translate(width/2, height/2);//移动起始点到中间
+</code></pre>
+<p>数据类型<br>
+Number（数字）：用IEEE754双精度 64 位表示，parseInt()用于把字符转数字,转换失败NaN，</p>
+<pre><code class="language-JavaScript">parseInt(&quot;123&quot;, 10); // 123，会一个个字符向后解析直到失败返回
++ &quot;42&quot;;   // 42，遇到失败返回NaN
+isNaN(NaN);//判断NaN，true
+1 / 0; //  Infinity，正无穷
+-1 / 0; // -Infinity，负无穷
+</code></pre>
+<p>String（字符串）<br>
+Boolean（布尔）：==比较前自动转换，=<mark>不转换 switch使用</mark>=<br>
+Symbol（符号）（ES2015 新增）<br>
+Object（对象）<br>
+  Function（函数）<br>
+  Array（数组）<br>
+  Date（日期）<br>
+RegExp（正则表达式）<br>
+null（空）<br>
+undefined（未定义）</p>
 
               </div>
               <div class="toc-container">

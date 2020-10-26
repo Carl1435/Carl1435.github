@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JS中的prototype、__proto__与constructor | Gridea</title>
-<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1602240649775">
+<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1603673911324">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JS中的prototype、__proto__与constructor | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://Carl1435.github.io">
-  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1602240649775" alt="">
+  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1603673911324" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -92,7 +92,9 @@
                 <p>参考https://blog.csdn.net/cc18868876837/article/details/81211729，这里只是说一下我的理解。<br>
   <strong>proto</strong>：对象拥有，指向原型（父）对象。作用：如果在在这个对象中找不到某个属性，就会去它的__proto__所指向的对象中去找。<br>
   constructor：对象拥有，指向对象的构造函数。最终所有对象的构造函数都会指向function()。<br>
-  prototype:函数拥有(因为函数也是对象所以函数也有上面两个属性),函数的原型对象。作用：存放了该函数所实例化的对象所拥有的方法和属性。</p>
+  prototype:函数拥有(因为函数也是对象所以函数也有上面两个属性),函数的原型对象。作用：存放了该函数所实例化的对象所拥有的方法和属性。<br>
+一个函数的.prototype.constructor是它本身。<br>
+所以在继承方法时要注意</p>
 <pre><code class="language-JavaScript">//代码
       function Person(){
       this.name;

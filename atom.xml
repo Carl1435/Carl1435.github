@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-10-09T10:50:57.170Z</updated>
+    <updated>2020-10-26T00:58:36.120Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -19,7 +19,9 @@
         <content type="html"><![CDATA[<p>参考https://blog.csdn.net/cc18868876837/article/details/81211729，这里只是说一下我的理解。<br>
   <strong>proto</strong>：对象拥有，指向原型（父）对象。作用：如果在在这个对象中找不到某个属性，就会去它的__proto__所指向的对象中去找。<br>
   constructor：对象拥有，指向对象的构造函数。最终所有对象的构造函数都会指向function()。<br>
-  prototype:函数拥有(因为函数也是对象所以函数也有上面两个属性),函数的原型对象。作用：存放了该函数所实例化的对象所拥有的方法和属性。</p>
+  prototype:函数拥有(因为函数也是对象所以函数也有上面两个属性),函数的原型对象。作用：存放了该函数所实例化的对象所拥有的方法和属性。<br>
+一个函数的.prototype.constructor是它本身。<br>
+所以在继承方法时要注意</p>
 <pre><code class="language-JavaScript">//代码
       function Person(){
       this.name;
@@ -54,7 +56,93 @@
         <link href="https://Carl1435.github.io/post/javascript-xue-xi/">
         </link>
         <updated>2020-10-07T14:24:58.000Z</updated>
-        <content type="html"><![CDATA[<p>一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起</p>
+        <content type="html"><![CDATA[<p>一些常用的事件：onfocus:获得焦点  onblur:移出焦点  ondblclick:双击  window.onkeypress, window.onkeydown, window.onkeyup：键盘按下弹起<br>
+获取页面元素：</p>
+<pre><code class="language-JavaScript">var li = document.getElementsByTagName('li');//标签名
+var li = document.getElementsById('li');//id
+var li = document.getElementsByClassName('li');//类名
+var li = document.querySelector('li');//类似css选择器
+var li = document.querySelectorAll('li');
+</code></pre>
+<p>删除一个元素：（在只知道元素本身的情况下）:</p>
+<pre><code class="language-JavaScript">var linkPara = document.querySelector('p');
+linkPara.parentNode.removeChild(linkPara);
+</code></pre>
+<p>更改css样式：</p>
+<pre><code class="language-JavaScript">para.style.color = 'white';
+para.setAttribute('class', 'highlight');
+</code></pre>
+<p>ajax格式：</p>
+<pre><code class="language-JavaScript">var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+  var superHeroes = request.response;
+  populateHeader(superHeroes);
+  showHeroes(superHeroes);
+}
+</code></pre>
+<p>canvas操作：</p>
+<pre><code class="language-JavaScript">var canvas = document.querySelector('.myCanvas');//获取画布
+var width = canvas.width //= window.innerWidth;加上这句可以使画布充满页面//获取画布宽高
+var height = canvas.height //= window.innerHeight;
+var ctx = canvas.getContext('2d');//
+ctx.fillStyle = 'rgb(255, 0, 0)';//指定颜色
+ctx.fillRect(50, 50, 100, 150);//画实心矩形参数意义：距离左上角的x，y和矩形宽高
+ctx.lineWidth = 5;//调整线条宽度
+ctx.strokeStyle = 'rgb(255, 255, 255)';//空心，其他同上
+ctx.strokeRect(25, 25, 175, 200);
+//画一个三角形
+function degToRad(degrees) {
+  return degrees * Math.PI / 180;
+};//把角度转换成弧度
+ctx.fillStyle = 'rgb(255, 0, 0)';
+ctx.beginPath();
+ctx.moveTo(50, 50);//移动到起始点
+ctx.lineTo(150, 50);
+var triHeight = 50 * Math.tan(degToRad(60));
+ctx.lineTo(100, 50+triHeight);
+ctx.lineTo(50, 50);
+ctx.fill();
+ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);//画圆，圆心x，y，半径，起始终点角度，顺逆时针
+ctx.lineWidth = 1;//空心文字
+ctx.font = '36px arial';
+ctx.strokeText('Canvas text', 50, 50);
+
+ctx.fillStyle = 'red';//实心文字
+ctx.font = '48px georgia';
+ctx.fillText('Canvas text', 50, 150);
+//插入图片
+var image = new Image();
+image.src = 'firefox.png'//创建图片对象
+image.onload = function() {
+  ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
+}//1，2裁剪起始点 3，4裁剪宽高，5，6在画布中的起始点，画布中图片表示出来的宽高
+
+动画效果
+ctx.translate(width/2, height/2);//移动起始点到中间
+</code></pre>
+<p>数据类型<br>
+Number（数字）：用IEEE754双精度 64 位表示，parseInt()用于把字符转数字,转换失败NaN，</p>
+<pre><code class="language-JavaScript">parseInt(&quot;123&quot;, 10); // 123，会一个个字符向后解析直到失败返回
++ &quot;42&quot;;   // 42，遇到失败返回NaN
+isNaN(NaN);//判断NaN，true
+1 / 0; //  Infinity，正无穷
+-1 / 0; // -Infinity，负无穷
+</code></pre>
+<p>String（字符串）<br>
+Boolean（布尔）：==比较前自动转换，=<mark>不转换 switch使用</mark>=<br>
+Symbol（符号）（ES2015 新增）<br>
+Object（对象）<br>
+  Function（函数）<br>
+  Array（数组）<br>
+  Date（日期）<br>
+RegExp（正则表达式）<br>
+null（空）<br>
+undefined（未定义）</p>
 ]]></content>
     </entry>
     <entry>
@@ -275,8 +363,11 @@ id选择器，优先级100<br>
   static：默认<br>
   relative：相对正常位置定位，正常位置占据的空间不变<br>
   fixed：位置固定，脱离文档流<br>
-  absolute：相对最近已定位父元素定位<br>
-  sticky：根据滚动位置来定位</p>
+  absolute：相对最近已定位父元素定位，设置z-index来使其上浮<br>
+  sticky：根据滚动位置来定位<br>
+还有：initial：设为浏览器默认值<br>
+inherit：继承<br>
+unset:不设置（默认继承就继承，不继承就设为浏览器默认）</p>
 <p>background：<br>
 background-clip：背景是否填充padding border等  border-box; &gt;padding-box; &gt;content-box;只是对背景进行裁剪，不涉及位置调整<br>
 background-origin:调整图片的位置.值与上面相同<br>
