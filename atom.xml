@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-10-26T01:13:21.122Z</updated>
+    <updated>2020-11-05T07:20:12.723Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -519,6 +519,21 @@ lineTo<br>
     context.fillText(&quot;上涨&quot;+String(up),250,origin.y*1+45,40);
     context.stroke();
 }
+</code></pre>
+<p>画矩形：</p>
+<pre><code class="language-CSS">fillRect(x, y, width, height)//画一个实心矩形
+strokeRect(x, y, width, height)//空心矩形
+clearRect(x, y, width, height)//清除矩形
+</code></pre>
+<p>画线：</p>
+<pre><code class="language-CSS">beginPath()//新建路径
+closePath()//闭合路径
+stroke()//画线
+fill()//把线填充
+moveTo(x, y)//移动到
+lineTo(x, y)//画线
+arc(x, y, radius, startAngle, endAngle, anticlockwise)//画圆（弧）
+arcTo(x1, y1, x2, y2, radius)//画圆（弧）
 </code></pre>
 ]]></content>
     </entry>

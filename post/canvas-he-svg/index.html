@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>canvas和svg | Gridea</title>
-<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1603674798839">
+<link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1604560803605">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="canvas和svg | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
@@ -27,7 +27,7 @@ let co..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://Carl1435.github.io">
-  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1603674798839" alt="">
+  <img class="avatar" src="https://Carl1435.github.io/images/avatar.png?v=1604560803605" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -87,7 +87,7 @@ let co..." />
                 2020-09-11
               </span>
               <span>
-                3 min read
+                4 min read
               </span>
               
             </div>
@@ -179,6 +179,21 @@ lineTo<br>
     context.fillText(&quot;上涨&quot;+String(up),250,origin.y*1+45,40);
     context.stroke();
 }
+</code></pre>
+<p>画矩形：</p>
+<pre><code class="language-CSS">fillRect(x, y, width, height)//画一个实心矩形
+strokeRect(x, y, width, height)//空心矩形
+clearRect(x, y, width, height)//清除矩形
+</code></pre>
+<p>画线：</p>
+<pre><code class="language-CSS">beginPath()//新建路径
+closePath()//闭合路径
+stroke()//画线
+fill()//把线填充
+moveTo(x, y)//移动到
+lineTo(x, y)//画线
+arc(x, y, radius, startAngle, endAngle, anticlockwise)//画圆（弧）
+arcTo(x1, y1, x2, y2, radius)//画圆（弧）
 </code></pre>
 
               </div>
