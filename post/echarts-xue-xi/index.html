@@ -2,23 +2,21 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>echarts学习 | Gridea</title>
 <link rel="shortcut icon" href="https://Carl1435.github.io/favicon.ico?v=1605534593895">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Carl1435.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="echarts学习 | Gridea - Atom Feed" href="https://Carl1435.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你 ！🤝
-
-🏠 关于本
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
+    <meta name="description" content="var myChart = echarts.init(document.getElementById('main'));
+    
+    // 指定图表的配置项和数据
+    var option = {
+    //图表标题
+     ..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -81,11 +79,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              echarts学习
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2020-11-16
               </span>
               <span>
                 1 min read
@@ -95,32 +93,55 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你 ！🤝</p>
-</blockquote>
-<h2 id="关于本">🏠 关于本</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                <pre><code class="language-JavaScript">var myChart = echarts.init(document.getElementById('main'));
+    
+    // 指定图表的配置项和数据
+    var option = {
+    //图表标题
+        title: {
+            text: '第一个 ECharts 实例'
+        },
+        提示信息
+        tooltip: {},
+        图例组件
+        legend: {
+            data:['销量']
+        },
+        x轴
+        xAxis: {
+            data: [&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;,&quot;裤子&quot;,&quot;高跟鞋&quot;,&quot;袜子&quot;]
+        },
+        y轴
+        yAxis: {},
+        每个系列
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</code></pre>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC">🏠 关于本</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://Carl1435.github.io/post/http-xie-yi/">
+              <h3 class="post-title">
+                http协议
+              </h3>
+            </a>
+          </div>
         
 
         

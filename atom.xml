@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-11-05T07:20:12.723Z</updated>
+    <updated>2020-11-16T13:49:56.380Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -10,6 +10,67 @@
     <logo>https://Carl1435.github.io/images/avatar.png</logo>
     <icon>https://Carl1435.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[echarts学习]]></title>
+        <id>https://Carl1435.github.io/post/echarts-xue-xi/</id>
+        <link href="https://Carl1435.github.io/post/echarts-xue-xi/">
+        </link>
+        <updated>2020-11-16T11:20:03.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-JavaScript">var myChart = echarts.init(document.getElementById('main'));
+    
+    // 指定图表的配置项和数据
+    var option = {
+    //图表标题
+        title: {
+            text: '第一个 ECharts 实例'
+        },
+        提示信息
+        tooltip: {},
+        图例组件
+        legend: {
+            data:['销量']
+        },
+        x轴
+        xAxis: {
+            data: [&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;,&quot;裤子&quot;,&quot;高跟鞋&quot;,&quot;袜子&quot;]
+        },
+        y轴
+        yAxis: {},
+        每个系列
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[http协议]]></title>
+        <id>https://Carl1435.github.io/post/http-xie-yi/</id>
+        <link href="https://Carl1435.github.io/post/http-xie-yi/">
+        </link>
+        <updated>2020-11-15T14:05:33.000Z</updated>
+        <content type="html"><![CDATA[<p>从MDN中总结<br>
+1.缓存：<br>
+无缓存：Cache-Control: no-store<br>
+缓存但重新验证：Cache-Control: no-cache<br>
+私有缓存：Cache-Control: private<br>
+公共缓存：Cache-Control: public<br>
+过期：Cache-Control: max-age=31536000<br>
+验证方式：Cache-Control: must-revalidate<br>
+2.cookie:<br>
+当服务器收到 HTTP 请求时，服务器可以在响应头里面添加一个 Set-Cookie 选项。浏览器收到响应后通常会保存下 Cookie，之后对该服务器每一次请求中都通过  Cookie 请求头部将 Cookie 信息发送给服务器。另外，Cookie 的过期时间、域、路径、有效期、适用站点都可以根据需要来指定<br>
+响应<br>
+Set-Cookie: yummy_cookie=choco<br>
+请求<br>
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JS中的prototype、__proto__与constructor]]></title>
         <id>https://Carl1435.github.io/post/js-zhong-de-prototype__proto__-yu-constructor/</id>
