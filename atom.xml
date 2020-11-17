@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Carl1435.github.io</id>
     <title>Gridea</title>
-    <updated>2020-11-16T13:49:56.380Z</updated>
+    <updated>2020-11-17T14:30:22.717Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Carl1435.github.io"/>
     <link rel="self" href="https://Carl1435.github.io/atom.xml"/>
@@ -68,7 +68,11 @@
 响应<br>
 Set-Cookie: yummy_cookie=choco<br>
 请求<br>
-Cookie: yummy_cookie=choco; tasty_cookie=strawberry</p>
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry<br>
+3.跨源资源共享（CORS）<br>
+3.1 简单请求：不会触发 CORS 预检请求<br>
+get head post<br>
+......</p>
 ]]></content>
     </entry>
     <entry>
